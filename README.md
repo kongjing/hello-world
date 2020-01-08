@@ -7,3 +7,7 @@ introduce myself:
 
 in this githup, I'll record my change, my gain
 I'll share with you
+
+Maybe  I don't know how to solve a problem, 
+
+I can find a solution to solve it
