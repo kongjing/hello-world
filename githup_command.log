@@ -7,6 +7,9 @@ git branch new_branch_name
 3. 切换到新的分支
 git checkout branch_name
 
+4. 创建分支并切换到该分支上
+git checkout -b branch_name
+
 4. 在分支上提交change
 git add filenameone filenametwo filename......
 git commit -m 'the info about change'
@@ -39,3 +42,17 @@ git config --global credential.helper store
 
 然后你会在你本地生成一个文本，上边记录你的账号和密码。当然这些你可以不用关心。
 然后你使用上述的命令配置好之后，再操作一次git pull，然后它会提示你输入账号密码，这一次之后就不需要再次输入密码了
+
+11. 初始化本地仓库并且建立远程仓库
+#特别说明：此时的远程仓库建立在本地机器的某个位置上，而不是githup上面
+mkdir local_rep
+cd local_rep
+git init   #初始化仓库
+touch filename
+git add filename
+git commit -m 'base version'  #将文件提交到了本地仓库
+git remote add origin /z/gitproject/gnu_make_study/.git/ #在本地仓库添加一个远程							  仓库，最后列是本地地址
+git push --set-upstream origin master  #将本地master分支跟踪到远程分支
+
+12. 解决在cygwin64上面，git clone提示无权限的问题
+将已经生成的.ssh/*的内容copy到xx:\cygwin64\home\username\.ssh下面
