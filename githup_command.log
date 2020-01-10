@@ -56,3 +56,11 @@ git push --set-upstream origin master  #将本地master分支跟踪到远程分�
 
 12. 解决在cygwin64上面，git clone提示无权限的问题
 将已经生成的.ssh/*的内容copy到xx:\cygwin64\home\username\.ssh下面
+
+13. windows系统上面，解决在cygwin64上面， git 命令无法自动补全的问题
+git clone https://github.com/markgandolfo/git-bash-completion.git
+cp xxx/completion/git-completion.bash ~/.git-completion.bash
+然后在notepad++里面编译该文件转换为unix的格式并保存
+vi ~/.bashrc,在文件的最后一行，加上如下代码：
+source ~/.git-completion.bash
+然后重新打开终端就可以自动补全啦 
