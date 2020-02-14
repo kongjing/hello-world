@@ -72,3 +72,17 @@ error: failed to execute prompt script (exit code 1)
 fatal: could not read Username for 'https://github.com': Invalid argument
 方案：由于本地git环境配置的是ssh方式，所以进入到相应工程目录下，修改文件
 vi .git/config , url改成git remote上面ssh的地址即可
+
+15.显示远程服务器分支的情况
+git remote show origin
+
+16. dev分支合并master分支的情况
+git merge master
+
+17. 合并分支的另一种方法，rebase方法, 比如master分支合并dev分支
+git checkout dev
+git rebase master //说明此时的dev已经以master为基准，将共同祖先往后的每次提交的patch 按照顺序apply，结果是dev分支所在指针已经在每次patch的过程中移动，知道合并完毕
+//说明： 对于上面的两步，可以合并成一步：git rebase master dev
+git checkout master
+git merge dev //此时master直接merge了dev，属于fast-forward merge
+
