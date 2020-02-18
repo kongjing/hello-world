@@ -86,3 +86,15 @@ git rebase master //说明此时的dev已经以master为基准，将共同祖先
 git checkout master
 git merge dev //此时master直接merge了dev，属于fast-forward merge
 
+18. 关于提交代码的注意事项
+首先，check下代码尾部是否有多余的空格，检查方法为：
+git diff --check
+第二， try to make each commit a logically separate changeset.简单来讲，就是每次提交都对应一个问题，使提交更加的清晰。也方便我们后期回溯版本查找问题。
+最后，创建有质量的提交信息，格式为：
+Summary， no more than 50 characters:describes the changeset concisely
+followed by a blank line
+followed by a more detailed explanation, include your motivation for the change and contrast its implementation with previous behavior
+followd by a blank line
+write your commit message in the imperative
+Further paragraphs come after blank lines
+
