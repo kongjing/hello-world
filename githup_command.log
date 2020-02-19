@@ -98,3 +98,5 @@ followd by a blank line
 write your commit message in the imperative
 Further paragraphs come after blank lines
 
+19.查找两个branch的共同祖先
+git merge-base branchone branchtwo 
