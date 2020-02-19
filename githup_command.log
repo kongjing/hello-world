@@ -99,4 +99,7 @@ write your commit message in the imperative
 Further paragraphs come after blank lines
 
 19.查找两个branch的共同祖先
-git merge-base branchone branchtwo 
+git merge-base branchone branchtwo
+
+20. contrib分支引入的差异从与master分支的共同祖先开始算
+git diff master... contrib 
