@@ -105,7 +105,7 @@ git merge-base branchone branchtwo
 git diff master... contrib
 
 21. 如果pull request的时候，出现merge cleanly的问题，解决办法有两个：
-推荐方法二： 因为rebase的好处只有history清晰，坏处rebase的新补丁结果可能不是我们想要的，可能会多出一些补丁；坏处还有假如已经push到公共库的提交结果重新base，就会出现顺序肯定与之前不同了，可是如果其他同事基于原来的基础进行操作就出问题啦
+推荐方法二： 因为rebase的好处只有history清晰，坏处rebase的新补丁结果可能不是我们想要的，可能会多出一些补丁(概率较小）；
 a) 基于原始库rebase
 b)merge原始库到本分支，具体步骤如下：
 git remote add upstream remoteURL
@@ -113,4 +113,4 @@ git fetch upstream
 git merge upstream/master
 如果有冲突处理file冲突：git add file; git commit
 git push origin branchname 
- 
+提醒：假如使用第一种方法，当然可以，但是需要注意一点：假如Pull Request is already opened on, it is highly encouraged to not force push over the branch. 原因是这样的，If other people have pulled it down and done more work on it, you run into all of the issues outlined in The Perils of Rebasing.如果该open请求没有拉的解决办法为：关闭掉拉取请求，将当前分支的rebase结果push到一个新的分支上面，然后重新拉取一个新的请求即可。如果该open请求已经被拉取的解决办法为：我觉得可以基于目前最新的远程初始master的情况,进行rebase，然后push到一个新的分支上面，然后拉取新的请求，并且在commits中说明情况。上面是我的个人观点，文档中解决方案是这样的： Instead, push the rebased branch to a new branch on GitHub and open a brand new Pull Request referencing the old one, then close the original. 
