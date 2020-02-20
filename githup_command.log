@@ -102,4 +102,15 @@ Further paragraphs come after blank lines
 git merge-base branchone branchtwo
 
 20. contrib分支引入的差异从与master分支的共同祖先开始算
-git diff master... contrib 
+git diff master... contrib
+
+21. 如果pull request的时候，出现merge cleanly的问题，解决办法有两个：
+推荐方法二： 因为rebase的好处只有history清晰，坏处rebase的新补丁结果可能不是我们想要的，可能会多出一些补丁；坏处还有假如已经push到公共库的提交结果重新base，就会出现顺序肯定与之前不同了，可是如果其他同事基于原来的基础进行操作就出问题啦
+a) 基于原始库rebase
+b)merge原始库到本分支，具体步骤如下：
+git remote add upstream remoteURL
+git fetch upstream
+git merge upstream/master
+如果有冲突处理file冲突：git add file; git commit
+git push origin branchname 
+ 
