@@ -117,4 +117,7 @@ git push origin branchname
 
 22. Multiple Points
 git log refA.. refB 等价于 git log ^refA refB 等价于 git log refB --not refA
-git log refA refB ^refC 等于于 git log refA refB --not refC , it means that all commits are reachable from refA or refB but not from refC 
+git log refA refB ^refC 等于于 git log refA refB --not refC , it means that all commits are reachable from refA or refB but not from refC
+
+23. Triple Dot
+git log --left-right master...experiment , it means that if you want to see what is in master or experiment but not any common references. 
