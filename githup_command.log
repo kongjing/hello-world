@@ -120,4 +120,9 @@ git log refA.. refB 等价于 git log ^refA refB 等价于 git log refB --not re
 git log refA refB ^refC 等于于 git log refA refB --not refC , it means that all commits are reachable from refA or refB but not from refC
 
 23. Triple Dot
-git log --left-right master...experiment , it means that if you want to see what is in master or experiment but not any common references. 
+git log --left-right master...experiment , it means that if you want to see what is in master or experiment but not any common references.
+
+24. do the partial-file staging
+git add --patch 进入编译模式，不需要提交的打上#号并保存
+git commit -m '输入log' 
+git commit -m ''  
