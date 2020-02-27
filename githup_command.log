@@ -125,4 +125,9 @@ git log --left-right master...experiment , it means that if you want to see what
 24. do the partial-file staging
 git add --patch 进入编译模式，不需要提交的打上#号并保存
 git commit -m '输入log' 
-git commit -m ''  
+git commit -m '' 
+
+25. 修改提交（包括内容和注释），前提是没有push上去，步骤如下：
+修改完毕stage，git add/rm filename
+重新提交， git commit --amend,重新编辑commit的注释
+特别提醒：这个amend命令相当于rebase，因为它改变了commit的SHA-1,所以如果已经push上去了，就不要再次修改push啦 
