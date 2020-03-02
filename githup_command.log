@@ -133,4 +133,7 @@ git commit -m ''
 特别提醒：这个amend命令相当于rebase，因为它改变了commit的SHA-1,所以如果已经push上去了，就不要再次修改push啦
 
 26. 关于checkout 遇到的一个坑
-场景如下：如果checkout了某个版本的一个文件，然后git pull，我的问题是这个文件是否更新呢？答案： 如果检出的是a文件， pull下来的发生改变的是b文件，那么a文件不发生改变; 如果检出的是a文件， pull下来的发生改变的是a文件, 那么此时发生merge冲突,需要处理下本地的a文件,再pull就不会发生问题啦。 
+场景如下：如果checkout了某个版本的一个文件，然后git pull，我的问题是这个文件是否更新呢？答案： 如果检出的是a文件， pull下来的发生改变的是b文件，那么a文件不发生改变; 如果检出的是a文件， pull下来的发生改变的是a文件, 那么此时发生merge冲突,需要处理下本地的a文件,再pull就不会发生问题啦。
+
+27. merge时候因为空格引起的冲突的解决办法：
+git merge -Xignore-space-change branchname 
