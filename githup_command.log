@@ -136,4 +136,16 @@ git commit -m ''
 场景如下：如果checkout了某个版本的一个文件，然后git pull，我的问题是这个文件是否更新呢？答案： 如果检出的是a文件， pull下来的发生改变的是b文件，那么a文件不发生改变; 如果检出的是a文件， pull下来的发生改变的是a文件, 那么此时发生merge冲突,需要处理下本地的a文件,再pull就不会发生问题啦。
 
 27. merge时候因为空格引起的冲突的解决办法：
-git merge -Xignore-space-change branchname 
+git merge -Xignore-space-change branchname
+
+28. 二分法查找问题版本，位于git的官网book教程，7.10 Debugging with Git,具体:
+git bisect start
+git bisect bad （标注当前出问题的版本）
+git bisect good commit_version_number(标注已知的无问题版本）
+此时会自动跳转到中间版本进行测试，根据测试结果标注为 git bisect good or i bad
+根据二分法原理，自动跳转到某个待测试版本,直到最后
+git bisect reset ，退出这种查找状态，返回到原来状态
+方法二：全部自动化进行，如果该版本的结果为good，return 0；否则，return 1,具体：
+git bisect start
+git bisect run test-error.sh,其中shell文件中包含当前版本的bad，和已知版本的good,然后就是根据规则自动查找和返回结果
+
