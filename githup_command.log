@@ -150,4 +150,8 @@ git bisect start
 git bisect run test-error.sh,其中shell文件中包含当前版本的bad，和已知版本的good,然后就是根据规则自动查找和返回结果
 
 29. 查看文件的类型，dos或unix或其他
-使用vim打开文件，输入:set ff?, 如果在windows上面查看，直接用notepad++打开，查看右下角倒数第三列即可 
+使用vim打开文件，输入:set ff?, 如果在windows上面查看，直接用notepad++打开，查看右下角倒数第三列即可
+
+30. 关于检出文件的区别
+git checkout -- file , 将Index区的file检出到work目录区
+git checkout versionnumber -- file, 将版本的对应提交文件检出到Index区和work目录区 ,
