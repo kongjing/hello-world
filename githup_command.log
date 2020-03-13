@@ -155,3 +155,27 @@ git bisect run test-error.sh,其中shell文件中包含当前版本的bad，和�
 30. 关于检出文件的区别
 git checkout -- file , 将Index区的file检出到work目录区
 git checkout versionnumber -- file, 将版本的对应提交文件检出到Index区和work目录区 ,
+另外： 这个是不安全的， 也就是如果本地有change，直接暴力不考虑
+对比：如果git reset [commit] <paths> ,将版本的对应提交文件检出到Index区，且是安全的
+
+31. git checkout 和 git reset 的区别
+------------------------------
+首先明确一个问题，对于HEAD的理解：
+HEAD is the pointer to the current branch reference，这里的分支引用比如master
+------------------------------
+1)讨论下检出某个分支的区别，比如当前处于dev分支，如果
+------------------------------
+git checkout master，结果为改变了HEAD指向,当前处于master分支上，
+另外： 这个是检出安全的，也就是会merge本地的change
+------------------------------
+git reset --hard master,结果为移动了dev分支的指向提交，指向了与master分支相同的提交, HEAD仍然跟随dev分支
+另外： 这个是不安全的， 也就是如果本地有change，直接暴力不考虑
+------------------------------
+2) 讨论下检出某个提交的版本的区别， 比如当前处于dev分支，如果
+------------------------------
+git checkout commitversion ,结果为HEAD指向commitversion，dev分支的指向不变，这个时候HEAD和dev的指向发生了不一致，处于detached的状态
+另外： 这个是检出安全的，也就是会merge本地的change
+------------------------------
+git reset --hard commitversion，结果为移动了dev分支的指向提交，指向了commitversion,HEAD仍然跟随dev分支
+另外： 这个是不安全的， 也就是如果本地有change，直接暴力不考虑
+
